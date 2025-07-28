@@ -1,0 +1,111 @@
+:root{
+    --button-col: hsl(195, 51%, 52%);
+    --button-hover: hsl(195, 81%, 30%);
+    --white: #fff;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.head{
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.dice{
+    width: 100px;
+    height: 100px;
+    border: 5px solid black;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 11px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    position: relative;
+    
+}
+.roll-animation{
+    animation-name: roll;
+}
+@keyframes roll{
+    0%{
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    100%{
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+.spot{
+    /* declearing the variables */
+    --top: 0%;
+    --left: 0%;
+    /* defining another properties */
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    background-color: black;
+    display: none;
+    /* Dot Positioning */
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    /* transform: translateX(calc(var(--left) * -1)) translateY(calc(var(--top) * -1)); */
+    transform: translate(-30%, -30%);
+}
+.button{
+    border: none;
+    border-radius: 16px;
+    background-color: var(--button-col);
+    color: var(--white);
+    transition: background-color 0.2s ease-in;
+    cursor: pointer;
+    padding-inline: 32px;
+    padding-block: 16px;
+    font-size: 21px;
+}
+.button:hover{
+    background-color: var(--button-hover);
+}
+#display_area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.display_field{ /*Apply throw the js when the button is pressed  */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 550px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+    margin-top: 30px;
+    padding-inline: 20px;
+    font-size: 25px;
+    box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+/* =============================== Media Query ============================ */
+
+@media (max-width : 400px){
+
+    .head{
+        font-size: 40px;
+    }
+    .display_field{
+        width: 350px;
+    }
+}
